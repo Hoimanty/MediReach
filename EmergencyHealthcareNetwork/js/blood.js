@@ -1,6 +1,7 @@
-let banks = [];                 
+
+let banks = [];                
 let bloodUser = DEFAULT_LOCATION;
-let bloodShown = [];           
+let bloodShown = [];            
 let selectedGroup = "all";      
 
 
@@ -10,10 +11,9 @@ function stockLevel(units) {
   return { cls: "tile-none", label: "Out" };
 }
 
-
 function makeBankResult(bank) {
   const distance = calculateDistance(bloodUser.lat, bloodUser.lng, bank.latitude, bank.longitude);
- 
+
   const criteria = selectedGroup === "all" ? {} : { bloodGroup: selectedGroup, quantity: 1 };
   const avail = evaluateAvailability(bank, "blood", criteria);
   return { item: bank, avail: avail, distance: distance, key: "blood" };
@@ -101,7 +101,7 @@ async function initBlood() {
 document.addEventListener("DOMContentLoaded", function () {
   bloodUser = getActiveLocation() || DEFAULT_LOCATION;
 
-  
+
   const wanted = getQueryParams().group;
   if (wanted && BLOOD_GROUPS.includes(wanted)) selectedGroup = wanted;
 

@@ -1,5 +1,6 @@
+
 const SERVICES = {
-  
+
   hospital:   { label: "Hospital",            icon: "bi-hospital",       file: "hospitals.json",   group: "hospital", hint: "Find the nearest emergency hospital." },
   bed:        { label: "ICU / CCU Bed",       icon: "bi-hospital-fill",  file: "hospitals.json",   group: "hospital", hint: "Find hospitals with a free ICU or CCU bed." },
   ambulance:  { label: "Ambulance",           icon: "bi-truck-front",    file: "ambulances.json",  group: "hospital", hint: "Find an ambulance that can be sent now." },
@@ -19,7 +20,6 @@ const OPTIONS = {
   testType: [["any", "Any test"], ["xray", "X-ray"], ["ct-scan", "CT scan"], ["mri", "MRI"], ["ultrasound", "Ultrasound"], ["ecg", "ECG"], ["pathology", "Pathology / lab tests"]]
 };
 
-
 const AREAS = [
   { name: "Dhanmondi",    lat: 23.7461, lng: 90.3742 },
   { name: "Mirpur",       lat: 23.8069, lng: 90.3687 },
@@ -33,8 +33,8 @@ const AREAS = [
   { name: "Old Dhaka (Sadarghat)", lat: 23.7104, lng: 90.4074 }
 ];
 
-const DEFAULT_LOCATION = { lat: 23.7561, lng: 90.3872, label: "Dhaka centre (default)", source: "default" };
 
+const DEFAULT_LOCATION = { lat: 23.7561, lng: 90.3872, label: "Dhaka centre (default)", source: "default" };
 
 const STATUS_INFO = {
   available:   { label: "Available",   cls: "status-available",   icon: "bi-check-circle-fill" },
@@ -44,13 +44,11 @@ const STATUS_INFO = {
 const STATUS_ORDER = { available: 0, limited: 1, unavailable: 2 };
 
 
-
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, function (ch) {
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
   });
 }
-
 
 function getQueryParams() {
   return Object.fromEntries(new URLSearchParams(window.location.search));
@@ -76,10 +74,8 @@ async function loadServiceData(fileName) {
   return await response.json();
 }
 
-
-
 function calculateDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371; // Earth radius in km
+  const R = 6371; 
   const toRad = function (deg) { return deg * Math.PI / 180; };
   const dLat = toRad(lat2 - lat1);
   const dLon = toRad(lon2 - lon1);
@@ -89,14 +85,12 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-
 function formatDistance(km) {
   if (km < 1) return Math.round(km * 1000 / 10) * 10 + " m away";
   return km.toFixed(1) + " km away";
 }
 
 
-/
 function getUserLocation() {
   return new Promise(function (resolve, reject) {
     if (!("geolocation" in navigator)) {
@@ -118,9 +112,8 @@ function isValidLocation(loc) {
          Math.abs(loc.lat) <= 90 && Math.abs(loc.lng) <= 180;
 }
 
-
 function saveLocation(loc) {
-  try { sessionStorage.setItem("ehan_location", JSON.stringify(loc)); } catch (e) { /* storage blocked: ignore */ }
+  try { sessionStorage.setItem("ehan_location", JSON.stringify(loc)); } catch (e) {  }
 }
 
 function getActiveLocation() {
@@ -133,13 +126,11 @@ function getActiveLocation() {
 }
 
 
-
 function statusFromCount(count, needed) {
   if (count >= needed && count > 0) return "available";
   if (count > 0) return "limited";
   return "unavailable";
 }
-
 
 function evaluateAvailability(item, key, criteria) {
   const needed = Number(criteria.quantity) || 1;
@@ -166,7 +157,7 @@ function evaluateAvailability(item, key, criteria) {
     }
     case "blood": {
       if (!criteria.bloodGroup) {
-       
+        
         const total = BLOOD_GROUPS.reduce(function (sum, g) { return sum + item.stock[g]; }, 0);
         return { status: total >= 40 ? "available" : total > 0 ? "limited" : "unavailable", text: total + " units in stock (all groups)" };
       }
@@ -188,12 +179,11 @@ function evaluateAvailability(item, key, criteria) {
   }
 }
 
-
 function buildResults(data, key, criteria, userLoc) {
   const results = [];
   data.forEach(function (item) {
     const avail = evaluateAvailability(item, key, criteria);
-    if (avail === null) return; // does not match the search
+    if (avail === null) return; 
     const distance = calculateDistance(userLoc.lat, userLoc.lng, item.latitude, item.longitude);
     results.push({ item: item, avail: avail, distance: distance, key: key });
   });
@@ -201,7 +191,6 @@ function buildResults(data, key, criteria, userLoc) {
 }
 
 
-/
 function searchableText(item, key) {
   const parts = [item.name, item.address, SERVICES[key].label, item.type];
   if (key === "hospital") parts.push("icu ccu bed emergency", item.departments.map(function (d) { return optionLabel("department", d); }).join(" "));
@@ -212,12 +201,10 @@ function searchableText(item, key) {
   return parts.join(" ").toLowerCase();
 }
 
-
 function matchesQuery(item, key, query) {
   const text = searchableText(item, key);
   return query.toLowerCase().split(/\s+/).filter(Boolean).every(function (word) { return text.includes(word); });
 }
-
 
 
 
@@ -226,13 +213,11 @@ function statusBadge(status) {
   return '<span class="status-badge ' + s.cls + '"><i class="bi ' + s.icon + '" aria-hidden="true"></i> ' + s.label + "</span>";
 }
 
-
 function directionsUrl(item, userLoc) {
   let url = "https://www.google.com/maps/dir/?api=1&destination=" + item.latitude + "," + item.longitude;
   if (userLoc && userLoc.source !== "default") url += "&origin=" + userLoc.lat + "," + userLoc.lng;
   return url;
 }
-
 
 function cardExtras(item, key) {
   const line = function (icon, text) { return '<li><i class="bi ' + icon + '" aria-hidden="true"></i> ' + escapeHtml(text) + "</li>"; };
@@ -285,11 +270,9 @@ function renderResultCard(r, userLoc, opts) {
     "</article>";
 }
 
-
 function detailRow(label, valueHtml) {
   return '<dt class="col-sm-4">' + label + '</dt><dd class="col-sm-8">' + valueHtml + "</dd>";
 }
-
 
 function buildDetailsHtml(r) {
   const item = r.item;

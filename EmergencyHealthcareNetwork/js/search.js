@@ -1,3 +1,4 @@
+
 const SEARCH_FIELDS = {
   bed: [
     { name: "bedType", label: "Bed type", type: "select", options: OPTIONS.bedType, required: true },
@@ -35,8 +36,7 @@ function buildFieldHtml(field, prefill) {
       return '<option value="' + escapeHtml(o[0]) + '"' + (o[0] === value ? " selected" : "") + ">" + escapeHtml(o[1]) + "</option>";
     }).join("");
     control = '<select class="form-select form-select-lg" id="' + id + '" name="' + field.name + '" aria-describedby="err-' + field.name + '">' + opts + "</select>";
-  } 
-  else if (field.type === "number") {
+  } else if (field.type === "number") {
     control = '<input type="number" class="form-control form-control-lg" id="' + id + '" name="' + field.name + '" min="' + field.min + '" max="' + field.max + '" value="' + escapeHtml(value) + '" aria-describedby="err-' + field.name + '">';
   } else {
     const listAttr = field.list ? ' list="' + id + '-list"' : "";
@@ -69,7 +69,6 @@ function renderForm(serviceKey, prefill) {
   });
 }
 
-/
 function validateSearchForm(serviceKey) {
   const errors = {};
 
@@ -89,7 +88,7 @@ function validateSearchForm(serviceKey) {
     }
   });
 
-  
+
   if (!getActiveLocation()) {
     errors.location = "Please set your location first.";
   }
@@ -115,7 +114,7 @@ function showErrors(serviceKey, errors) {
 document.addEventListener("DOMContentLoaded", function () {
   const params = getQueryParams();
 
-  
+
   const pill = function (key) {
     return '<button type="button" class="btn btn-outline-dark pill-btn" data-service="' + key + '" aria-pressed="false">' +
            '<i class="bi ' + SERVICES[key].icon + '" aria-hidden="true"></i> ' + SERVICES[key].label + "</button>";
@@ -133,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.replaceState(null, "", "search.html?service=" + btn.dataset.service);
   });
 
-  
+
   const start = SERVICES[params.service] ? params.service : "hospital";
   renderForm(start, params.service === start ? params : {}); 
 
@@ -150,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-   
+  
     const loc = getActiveLocation();
     const query = new URLSearchParams({ service: currentService, lat: loc.lat, lng: loc.lng, loc: loc.label });
     SEARCH_FIELDS[currentService].forEach(function (f) {

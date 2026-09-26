@@ -1,10 +1,13 @@
-let mapMarkers = []; 
-let youMarker = null; 
+
+
+let mapMarkers = [];   
+let youMarker = null;  
+
 function createMap(elementId, center) {
   const box = document.getElementById(elementId);
   if (typeof google === "undefined" || !google.maps) {
     box.innerHTML = '<div class="state-box h-100 border-0"><i class="bi bi-wifi-off fs-1" aria-hidden="true"></i>' +
-      '<p class="mb-0">The map could not load and Check your internet connection.</p></div>';
+      '<p class="mb-0">The map could not load. Check your internet connection.</p></div>';
     return null;
   }
   return new google.maps.Map(box, {
@@ -17,6 +20,8 @@ function createMap(elementId, center) {
 }
 
 const PIN_COLOR = { available: "#0b6e3a", limited: "#d98200", unavailable: "#4d5560" };
+
+
 function pinIcon(status) {
   const color = PIN_COLOR[status] || PIN_COLOR.unavailable;
   const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">' +
@@ -32,6 +37,7 @@ function clearMarkers() {
   mapMarkers.forEach(function (m) { m.setMap(null); });
   mapMarkers = [];
 }
+
 function drawMarkers(map, results, userLoc, onSelect) {
   const pins = {};
   if (!map) return pins;
@@ -76,6 +82,7 @@ function drawMarkers(map, results, userLoc, onSelect) {
   }
   return pins;
 }
+
 
 function focusPin(map, pins, result) {
   if (!map) return;

@@ -1,8 +1,11 @@
+
+
 let locatorMap = null;
 let locatorPins = {};
 let locatorUser = DEFAULT_LOCATION;
 let locatorAll = [];     
 let locatorShown = [];    
+
 
 function filterLocator() {
   const layer = document.querySelector('input[name="layer"]:checked').value;
@@ -26,6 +29,7 @@ function renderLocatorList() {
   }).join("") + "</div>";
 }
 
+
 function refreshLocator() {
   locatorAll.forEach(function (r) {
     r.distance = calculateDistance(locatorUser.lat, locatorUser.lng, r.item.latitude, r.item.longitude);
@@ -44,6 +48,7 @@ async function initLocator() {
   const list = document.getElementById("locatorList");
   list.innerHTML = '<div class="state-box" role="status"><div class="spinner-border text-danger mb-3" aria-hidden="true"></div><p class="mb-0">Finding available emergency services...</p></div>';
   try {
+    
     const both = await Promise.all([
       loadServiceData(SERVICES.hospital.file),
       loadServiceData(SERVICES.ambulance.file)

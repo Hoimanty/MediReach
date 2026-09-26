@@ -1,8 +1,9 @@
 
-let allResults = [];     
-let shownResults = [];    
+
+let allResults = [];    
+let shownResults = [];   
 let serviceKey = "";      
-let criteria = {};        
+let criteria = {};       
 let userLoc = null;
 let resultsMap = null;
 let pins = {};
@@ -28,7 +29,6 @@ function showProblem(title, text, buttonHtml) {
     '<div class="state-box"><i class="bi bi-exclamation-octagon fs-1 text-danger" aria-hidden="true"></i>' +
     '<h2 class="h5 mt-2">' + title + "</h2><p>" + text + "</p>" + (buttonHtml || "") + "</div>";
 }
-
 
 function describeSearch() {
   if (serviceKey === "all") return 'Searching everything for "' + criteria.q + '" near ' + userLoc.label;
@@ -59,7 +59,7 @@ function filterResults(list) {
 
 
 function sortResults(list, mode) {
-  const sorted = list.slice(); // copy so the original order is untouched
+  const sorted = list.slice();
   sorted.sort(function (a, b) {
     if (mode === "nearest") return a.distance - b.distance;
     if (mode === "farthest") return b.distance - a.distance;
@@ -118,7 +118,7 @@ async function loadAllResults(query) {
   const lists = await Promise.all(ALL_SEARCH_SOURCES.map(function (s) { return loadServiceData(SERVICES[s.key].file); }));
   const results = [];
   ALL_SEARCH_SOURCES.forEach(function (source, i) {
-    lists[i].forEach(function (item) {rttttgtt
+    lists[i].forEach(function (item) {
       if (!matchesQuery(item, source.key, query)) return;
       const avail = evaluateForSearchAll(item, source, query.toLowerCase());
       if (avail === null) return;
@@ -144,7 +144,7 @@ async function initResults() {
     return;
   }
 
- 
+
   const fromUrl = { lat: parseFloat(params.lat), lng: parseFloat(params.lng), label: params.loc || "your location", source: "url" };
   userLoc = isValidLocation(fromUrl) ? fromUrl : getActiveLocation();
   
@@ -152,6 +152,7 @@ async function initResults() {
 
   if (!userLoc && isAll) {
     userLoc = DEFAULT_LOCATION; 
+  }
   if (!userLoc) {
     showProblem("Your location is missing or invalid.", "We need it to find the nearest services.", '<a class="btn btn-danger" href="search.html?service=' + serviceKey + '">Set location</a>');
     return;
@@ -169,10 +170,10 @@ async function initResults() {
     if (isAll) {
       allResults = await loadAllResults(params.q.trim());
     } else {
-      const data = await loadServiceData(SERVICES[serviceKey].file);   // fetch + JSON
-      allResults = buildResults(data, serviceKey, criteria, userLoc);   // match + distance
+      const data = await loadServiceData(SERVICES[serviceKey].file);   
+      allResults = buildResults(data, serviceKey, criteria, userLoc);  
     }
-    refreshResults();                                                   // filter + sort + render
+    refreshResults();                                                   
   } catch (error) {
     console.error(error);
     showProblem("Unable to load service data.", "Please try again. (If you opened the file directly, run it with a local web server - see README.)",
@@ -187,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById(id).addEventListener(id === "nameSearch" ? "input" : "change", refreshResults);
   });
 
-  
+ 
   document.getElementById("resultsArea").addEventListener("click", function (e) {
     const detailsBtn = e.target.closest(".btn-details");
     const locateBtn = e.target.closest(".btn-locate");

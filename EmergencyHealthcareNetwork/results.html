@@ -21,7 +21,7 @@
       <a class="btn btn-outline-dark" id="modifySearch" href="search.html"><i class="bi bi-pencil" aria-hidden="true"></i> Change search</a>
     </div>
 
-    
+    <!-- Main controls: sort + hide unavailable. Extra filters are tucked into "More filters". -->
     <div class="panel mb-3">
       <div class="row g-2 align-items-end">
         <div class="col-12 col-sm-7">
@@ -62,7 +62,7 @@
     <p class="small text-secondary" id="resultCount" role="status" aria-live="polite"></p>
 
     <div class="row g-3">
-     
+      <!-- On phones the map comes first (small), on large screens it stays beside the list -->
       <div class="col-lg-6 order-1 order-lg-2">
         <div class="map-sticky">
           <div id="map" class="map-box map-box-sm" role="application" aria-label="Map of the results"></div>

@@ -10,24 +10,24 @@ During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or r
 
 ## Features
 
-* 🏥 Search for available hospitals and healthcare services
-* 🚑 Locate nearby ambulances
-* 🩸 Check blood group availability
-* 🛏️ Search for ICU/CCU bed availability
-* 📍 View hospitals and ambulances on a map
-* 🔎 Search and filter healthcare resources
-* 📏 Sort results based on distance and availability
-* 📞 Quick access to emergency number 999
-* 📱 Responsive interface for different screen sizes
-* ♿ Accessibility support with semantic HTML and skip navigation
+- 🏥 Search for available hospitals and healthcare services
+- 🚑 Locate nearby ambulances
+- 🩸 Check blood group availability
+- 🛏️ Search for ICU/CCU bed availability
+- 📍 View hospitals and ambulances on a map
+- 🔎 Search and filter healthcare resources
+- 📏 Sort results based on distance and availability
+- 📞 Quick access to emergency number 999
+- 📱 Responsive interface for different screen sizes
+- ♿ Accessibility support with semantic HTML and skip navigation
 
 ## Technologies Used
 
-* **HTML5** — Page structure and semantic elements
-* **CSS3** — Styling and responsive design
-* **JavaScript** — Dynamic content, search, filtering, and page functionality
-* **Bootstrap 5** — Responsive layout and UI components
-* **Google Maps** — Map-based visualization of healthcare resources
+- **HTML5** — Page structure and semantic elements
+- **CSS3** — Styling and responsive design
+- **JavaScript** — Dynamic content, search, filtering, and page functionality
+- **Bootstrap 5** — Responsive layout and UI components
+- **Google Maps** — Map-based visualization of healthcare resources
 
 ## Purpose
 

@@ -69,7 +69,7 @@ function renderForm(serviceKey, prefill) {
   });
 }
 
-/
+
 function validateSearchForm(serviceKey) {
   const errors = {};
 

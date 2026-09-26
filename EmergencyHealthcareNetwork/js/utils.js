@@ -34,7 +34,7 @@ const AREAS = [
 ];
 
 
-const DEFAULT_LOCATION = { lat: 23.7561, lng: 90.3872, label: "Dhaka centre (default)", source: "default" };
+const DEFAULT_LOCATION = { lat: 23.7561, lng: 90.3872 };
 
 const STATUS_INFO = {
   available:   { label: "Available",   cls: "status-available",   icon: "bi-check-circle-fill" },
@@ -315,7 +315,7 @@ function buildDetailsHtml(r) {
       break;
   }
 
-  rows += detailRow("Demo update", escapeHtml(formatUpdated(item.lastUpdated)));
+  rows += detailRow("Update", escapeHtml(formatUpdated(item.lastUpdated)));
   return '<dl class="row mb-3">' + rows + "</dl>" +
-         '<p class="small text-muted mb-0"><i class="bi bi-info-circle" aria-hidden="true"></i> Demo data with simulated availability. Always call to confirm before travelling.</p>';
+         '<p class="small text-muted mb-0"><i class="bi bi-info-circle" aria-hidden="true"></i>   Always call to confirm before travelling.</p>';
 }

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#contactForm .is-invalid").focus();
       return;
     }
-    result.innerHTML = '<div class="alert alert-success mb-0">Thank you, ' + escapeHtml(values.name) + '. This is a demo: your message was checked but not sent anywhere.</div>';
+    result.innerHTML = '<div class="alert alert-success mb-0">Thank you, ' + escapeHtml(values.name) + '. Your message was checked but not sent anywhere.</div>';
     form.reset();
   });
 });

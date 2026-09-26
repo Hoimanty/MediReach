@@ -64,7 +64,7 @@ function renderBloodBoard() {
         "</div>" +
         '<p class="mb-2"><strong>' + formatDistance(r.distance) + '</strong> <span class="text-secondary">- ' + escapeHtml(b.address) + "</span></p>" +
         '<div class="tile-grid mb-2" role="list">' + tiles + "</div>" +
-        '<p class="small text-secondary mb-0"><i class="bi bi-clock-history" aria-hidden="true"></i> Demo update: ' + escapeHtml(formatUpdated(b.lastUpdated)) + " | " + escapeHtml(b.openHours) + "</p>" +
+        '<p class="small text-secondary mb-0"><i class="bi bi-clock-history" aria-hidden="true"></i> Update: ' + escapeHtml(formatUpdated(b.lastUpdated)) + " | " + escapeHtml(b.openHours) + "</p>" +
       "</div>" +
       '<div class="card-footer bg-transparent d-flex flex-wrap gap-2">' +
         '<button type="button" class="btn btn-dark btn-sm btn-details" data-id="' + escapeHtml(b.id) + '">View Details</button>' +

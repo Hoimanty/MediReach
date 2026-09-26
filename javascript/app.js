@@ -35,7 +35,6 @@ function navItemHtml(item) {
 
 function renderLayout() {
   document.getElementById("site-nav").innerHTML =
-    '<div class="demo-banner text-center small py-1 px-2">Demo project with simulated data. In a real emergency call <a href="tel:999">999</a>.</div>' +
     '<div class="app-nav">' +
       '<div class="container topbar">' +
         '<a class="brand" href="index.html"><i class="bi bi-heart-pulse-fill" aria-hidden="true"></i> <span>Emergency Healthcare Network</span></a>' +
@@ -56,7 +55,7 @@ function renderLayout() {
     "</div>";
 
   document.getElementById("site-footer").innerHTML =
-    '<div class="container py-3 small text-secondary">Emergency Healthcare Availability Network - university project. Demo data only; no medical guarantee. Emergency: <a href="tel:999">999</a>.</div>';
+    '<div class="container py-3 small text-secondary">This is not real data.We just use some manual data to show our project.</div>';
   document.body.insertAdjacentHTML("beforeend",
     '<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalTitle" aria-hidden="true">' +
       '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"><div class="modal-content">' +
@@ -66,7 +65,7 @@ function renderLayout() {
         '<div class="modal-footer" id="detailsModalFooter"></div>' +
       "</div></div></div>");
 
-  initNavSearch();
+  initNavSearch()
 }
 function initNavSearch() {
   const form = document.getElementById("navSearch");
@@ -118,8 +117,8 @@ function renderLocationWidget(containerId, onChange, options) {
       '<div class="row g-2 align-items-center">' +
         '<div class="' + colBtn + '"><button type="button" class="btn btn-danger w-100" id="btnUseLocation"><i class="bi bi-crosshair" aria-hidden="true"></i> Use my location</button></div>' +
         '<div class="' + colInput + '"><div class="input-group">' +
-          '<label class="visually-hidden" for="areaInput">Or type your area</label>' +
-          '<input type="text" class="form-control" id="areaInput" list="areaList" placeholder="Or type your area (e.g. Mirpur)" autocomplete="off">' +
+          '<label class="visually-hidden" for="areaInput"> Type your area</label>' +
+          '<input type="text" class="form-control" id="areaInput" list="areaList" placeholder="Type your area " autocomplete="off">' +
           '<button type="button" class="btn btn-dark" id="btnSetArea">Set</button>' +
         "</div></div>" +
       "</div>" +

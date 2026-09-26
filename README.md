@@ -1,12 +1,10 @@
-## Emergency Healthcare Availability Network
+## MediReach-Emergency Healthcare Availability Network
 
 An emergency healthcare support web application designed to help users quickly find nearby healthcare resources such as hospitals, ICU/CCU beds, ambulances, and blood availability.
 
 ## Project Overview
 
-During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or required blood group can be difficult and time-consuming. This project provides a simple web-based interface where users can search for available emergency healthcare services based on their needs and location.
-
-> **Note:** This is a demonstration project using simulated data. The healthcare facilities, ambulance information, and blood stock data are not real-time.
+During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or required blood group can be difficult and time-consuming. This project provides a simple web-based interface where users can search for available emergency healthcare services based on their needs and location.For now this project is built with some manual data.The healthcare facilities, ambulance information, and blood stock data are not real-time.
 
 ## Features
 
@@ -19,7 +17,7 @@ During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or r
 - 📏 Sort results based on distance and availability
 - 📞 Quick access to emergency number 999
 - 📱 Responsive interface for different screen sizes
-- ♿ Accessibility support with semantic HTML and skip navigation
+- ♿ Accessibility support with semantic HTML and navigation
 
 ## Technologies Used
 
@@ -27,7 +25,7 @@ During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or r
 - **CSS3** — Styling and responsive design
 - **JavaScript** — Dynamic content, search, filtering, and page functionality
 - **Bootstrap 5** — Responsive layout and UI components
-- **Google Maps** — Map-based visualization of healthcare resources
+- **Google Maps API** — Map-based visualization of healthcare resources
 
 ## Purpose
 

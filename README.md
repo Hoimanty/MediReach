@@ -17,7 +17,7 @@ During an emergency, finding an available hospital, ambulance, ICU/CCU bed, or r
 - 📏 Sort results based on distance and availability
 - 📞 Quick access to emergency number 999
 - 📱 Responsive interface for different screen sizes
-- ♿ Accessibility support with semantic HTML and navigation
+- ♿ Accessibility support with semantic HTML and skip navigation
 
 ## Technologies Used
 
